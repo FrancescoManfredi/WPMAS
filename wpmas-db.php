@@ -9,13 +9,12 @@
  * Returns all options as a dictionary
  */
 function wpmas_get_options() {
-	
+	return get_option("wpmas_options");
 }
 
 /**
- * Test for plugin database table existence
- * Returns true if exists
+ * Set plugin $option with value $value
  */
-function wpmas_db_exists() {
-	
+function wpmas_set_options($wpmas_options) {
+	update_option("wpmas_options", $wpmas_options);
 }
