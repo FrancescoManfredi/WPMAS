@@ -13,6 +13,7 @@ defined( 'ABSPATH' ) or die( 'This is a worpdress plugin. You should not execute
 
 require_once(plugin_dir_path(__FILE__) . "wpmas-db.php");
 require_once(plugin_dir_path(__FILE__) . "wpmas-ui.php");
+require_once(plugin_dir_path(__FILE__) . "wpmas-callbacks.php");
 
 /**
  * Set default options
@@ -49,7 +50,8 @@ function wpmas_set_default() {
 	wpmas_set_options($wpmas_default_options);
 }
 
-if (!wpmas_get_options()) {
+$wpmas_options = wpmas_get_options();
+if (!$wpmas_options) {
 	wpmas_set_default();
 }
 
@@ -59,12 +61,14 @@ add_action( 'admin_menu', 'wpmas_build_admin_ui' );
  * Bind the reaction of sending the appropriate message to the events the
  * admin wants to track.
  */
-function wpmas_bind_events() {
+function wpmas_bind_events($wpmas_options) {
 	
-	foreach ($array as $key => $value) {
-		
+	foreach ($wpmas_options['events'] as $eName => $e) {
+		if ($e['track']) {
+			add_action( $eName, 'wpmas_' . $eName . '_callback' );
+		}
 	}
 	
 }
 
-wpmas_bind_events();
+wpmas_bind_events($wpmas_options);
