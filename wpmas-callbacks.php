@@ -30,11 +30,27 @@ function wpmas_save_post_callback( $post_id ) {
 	/*
 	 * newPost(postId, postType, author)
 	 */
+	$msg = "(inform
+  :sender (agent-identifier :name " . $wpmas_options['sender'] . ")
+  :receiver (set (";
 	
-	wpmas_send_message("(inform
-  :sender (agent-identifier :name i)
-  :receiver (set (agent-identifier :name j))
+	$rList = explode(' ', $wpmas_options['events']['save_post']['receiver']);
+	foreach ($rList as $r) {
+		$msg .= "agent-identifier :name " . $r .",";
+	}
+	
+	$msg = substr($msg, 0, strlen($msg)-1) . "))
   :content
     \"newPost(" . $post_id . ", " . $p->post_type . ", ". $p->post_author .")\"
-  :language Prolog)");
+  :language Prolog)";
+	
+	wpmas_send_message($msg);
+}
+
+/**
+ * Handle creation of new comment
+ * @param type $comment_id
+ */
+function wpmas_comment_post_callback( $comment_id ) {
+	
 }
