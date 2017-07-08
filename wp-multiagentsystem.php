@@ -23,23 +23,23 @@ function wpmas_set_default() {
 		'masHost' => '',
 		'sender' => '',
 		'events' => [
-			'new_post' => [
+			'save_post' => [
 				'track' => false,
 				'receiver' => '',
 			],
-			'new_comment' => [
+			'comment_post' => [
 				'track' => false,
 				'receiver' => '',
 			],
-			'new_user' => [
+			'user_register' => [
 				'track' => false,
 				'receiver' => '',
 			],
-			'login' => [
+			'wp_login' => [
 				'track' => false,
 				'receiver' => '',
 			],
-			'visit' => [
+			'wp_loaded' => [
 				'track' => false,
 				'receiver' => '',
 			]
@@ -60,6 +60,10 @@ add_action( 'admin_menu', 'wpmas_build_admin_ui' );
  * admin wants to track.
  */
 function wpmas_bind_events() {
+	
+	foreach ($array as $key => $value) {
+		
+	}
 	
 }
 

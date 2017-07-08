@@ -22,19 +22,19 @@ function wpmas_settings_page() {
 	if (isset($_POST['posted']) && $_POST['posted']=='y') {
 		$wpmas_options['masHost'] = $_POST['masHost'];
 		$wpmas_options['sender'] = $_POST['sender'];
-		if ($_POST['new_post_track']) {
-			$wpmas_options['events']['new_post']['track'] = true;
+		if ($_POST['save_post_track']) {
+			$wpmas_options['events']['save_post']['track'] = true;
 		} else {
-			$wpmas_options['events']['new_post']['track'] = false;
+			$wpmas_options['events']['save_post']['track'] = false;
 		}
-		$wpmas_options['events']['new_post']['receiver'] = $_POST['new_post_receiver'];
+		$wpmas_options['events']['save_post']['receiver'] = $_POST['save_post_receiver'];
 		
-		if ($_POST['new_comment_track']) {
-			$wpmas_options['events']['new_comment']['track'] = true;
+		if ($_POST['comment_post_track']) {
+			$wpmas_options['events']['comment_post']['track'] = true;
 		} else {
-			$wpmas_options['events']['new_comment']['track'] = false;
+			$wpmas_options['events']['comment_post']['track'] = false;
 		}
-		$wpmas_options['events']['new_comment']['receiver'] = $_POST['new_comment_receiver'];
+		$wpmas_options['events']['comment_post']['receiver'] = $_POST['comment_post_receiver'];
 		
 		if ($_POST['new_user_track']) {
 			$wpmas_options['events']['new_user']['track'] = true;
@@ -94,22 +94,22 @@ function wpmas_settings_page() {
 		<tr>
 			<th scope="row"><label>New content published</label></th>
 			<td>
-				<label for="new_post_track">Track event: 
-					<input type="checkbox" id="new_post_track" name="new_post_track" value="new_post_track" <?php if($wpmas_options['events']['new_post']['track']) echo 'checked' ?>>
+				<label for="save_post_track">Track event: 
+					<input type="checkbox" id="save_post_track" name="save_post_track" value="save_post_track" <?php if($wpmas_options['events']['save_post']['track']) echo 'checked' ?>>
 				</label>
-				<label for="new_post_receiver">
-					<input name="new_post_receiver" placeholder="es: agentSmith, agentJohn" type="text" id="new_post_receiver" value="<?php echo $wpmas_options['events']['new_post']['receiver']; ?>" class="regular-text" />
+				<label for="save_post_receiver">
+					<input name="save_post_receiver" placeholder="es: agentSmith, agentJohn" type="text" id="save_post_receiver" value="<?php echo $wpmas_options['events']['save_post']['receiver']; ?>" class="regular-text" />
 				</label>
 			</td>
 		</tr>
 		<tr>
 			<th scope="row"><label>New comment</label></th>
 			<td>
-				<label for="new_comment_track">Track event: 
-					<input type="checkbox" id="new_comment_track" name="new_comment_track" value="new_comment_track" <?php if($wpmas_options['events']['new_comment']['track']) echo 'checked' ?>>
+				<label for="comment_post_track">Track event: 
+					<input type="checkbox" id="comment_post_track" name="comment_post_track" value="comment_post_track" <?php if($wpmas_options['events']['comment_post']['track']) echo 'checked' ?>>
 				</label>
-				<label for="new_comment_receiver">
-					<input name="new_comment_receiver" placeholder="es: agentSmith, agentJohn" type="text" id="new_comment_receiver" value="<?php echo $wpmas_options['events']['new_comment']['receiver']; ?>" class="regular-text" />
+				<label for="comment_post_receiver">
+					<input name="comment_post_receiver" placeholder="es: agentSmith, agentJohn" type="text" id="comment_post_receiver" value="<?php echo $wpmas_options['events']['comment_post']['receiver']; ?>" class="regular-text" />
 				</label>
 			</td>
 		</tr>
