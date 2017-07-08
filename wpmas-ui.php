@@ -98,7 +98,7 @@ function wpmas_settings_page() {
 					<input type="checkbox" id="save_post_track" name="save_post_track" value="save_post_track" <?php if($wpmas_options['events']['save_post']['track']) echo 'checked' ?>>
 				</label>
 				<label for="save_post_receiver">
-					<input name="save_post_receiver" placeholder="es: agentSmith, agentJohn" type="text" id="save_post_receiver" value="<?php echo $wpmas_options['events']['save_post']['receiver']; ?>" class="regular-text" />
+					<input name="save_post_receiver" placeholder="es: agentSmith agentJohn" type="text" id="save_post_receiver" value="<?php echo $wpmas_options['events']['save_post']['receiver']; ?>" class="regular-text" />
 				</label>
 			</td>
 		</tr>
@@ -109,7 +109,7 @@ function wpmas_settings_page() {
 					<input type="checkbox" id="comment_post_track" name="comment_post_track" value="comment_post_track" <?php if($wpmas_options['events']['comment_post']['track']) echo 'checked' ?>>
 				</label>
 				<label for="comment_post_receiver">
-					<input name="comment_post_receiver" placeholder="es: agentSmith, agentJohn" type="text" id="comment_post_receiver" value="<?php echo $wpmas_options['events']['comment_post']['receiver']; ?>" class="regular-text" />
+					<input name="comment_post_receiver" placeholder="es: agentSmith agentJohn" type="text" id="comment_post_receiver" value="<?php echo $wpmas_options['events']['comment_post']['receiver']; ?>" class="regular-text" />
 				</label>
 			</td>
 		</tr>
@@ -120,7 +120,7 @@ function wpmas_settings_page() {
 					<input type="checkbox" id="new_user_track" name="new_user_track" value="new_user_track" <?php if($wpmas_options['events']['new_user']['track']) echo 'checked' ?>>
 				</label>
 				<label for="new_user_receiver">
-					<input name="new_user_receiver" placeholder="es: agentSmith, agentJohn" type="text" id="new_user_receiver" value="<?php echo $wpmas_options['events']['new_user']['receiver']; ?>" class="regular-text" />
+					<input name="new_user_receiver" placeholder="es: agentSmith agentJohn" type="text" id="new_user_receiver" value="<?php echo $wpmas_options['events']['new_user']['receiver']; ?>" class="regular-text" />
 				</label>
 			</td>
 		</tr>
@@ -131,7 +131,7 @@ function wpmas_settings_page() {
 					<input type="checkbox" id="login_track" name="login_track" value="login_track" <?php if($wpmas_options['events']['login']['track']) echo 'checked' ?>>
 				</label>
 				<label for="login_receiver">
-					<input name="login_receiver" placeholder="es: agentSmith, agentJohn" type="text" id="login_receiver" value="<?php echo $wpmas_options['events']['login']['receiver']; ?>" class="regular-text" />
+					<input name="login_receiver" placeholder="es: agentSmith agentJohn" type="text" id="login_receiver" value="<?php echo $wpmas_options['events']['login']['receiver']; ?>" class="regular-text" />
 				</label>
 			</td>
 		</tr>
@@ -142,7 +142,7 @@ function wpmas_settings_page() {
 					<input type="checkbox" id="visit_track" name="visit_track" value="visit_track" <?php if($wpmas_options['events']['visit']['track']) echo 'checked' ?>>
 				</label>
 				<label for="visit_receiver">
-					<input name="visit_receiver" placeholder="es: agentSmith, agentJohn" type="text" id="visit_receiver" value="<?php echo $wpmas_options['events']['visit']['receiver']; ?>" class="regular-text" />
+					<input name="visit_receiver" placeholder="es: agentSmith agentJohn" type="text" id="visit_receiver" value="<?php echo $wpmas_options['events']['visit']['receiver']; ?>" class="regular-text" />
 				</label>
 			</td>
 		</tr>

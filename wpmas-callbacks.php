@@ -9,9 +9,12 @@
  * Send generic message via http POST
  */
 function wpmas_send_message($message) {
+	
+	$wpmas_options = wpmas_get_options();
+	
 	$ch = curl_init();
 
-	curl_setopt($ch, CURLOPT_URL,"http://localhost:5000");
+	curl_setopt($ch, CURLOPT_URL, $wpmas_options['masHost']);
 	curl_setopt($ch, CURLOPT_POST, 1);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array('msg' => $message)));
 	curl_exec($ch);
@@ -52,5 +55,27 @@ function wpmas_save_post_callback( $post_id ) {
  * @param type $comment_id
  */
 function wpmas_comment_post_callback( $comment_id ) {
+	
+	$wpmas_options = wpmas_get_options();
+	$c = get_comment($comment_id);
+	
+	/*
+	 * newComment(commentId, postId, author)
+	 */
+	$msg = "(inform
+  :sender (agent-identifier :name " . $wpmas_options['sender'] . ")
+  :receiver (set (";
+	
+	$rList = explode(' ', $wpmas_options['events']['comment_post']['receiver']);
+	foreach ($rList as $r) {
+		$msg .= "agent-identifier :name " . $r .",";
+	}
+	
+	$msg = substr($msg, 0, strlen($msg)-1) . "))
+  :content
+    \"newPost(" . $comment_id . ", " . $c->comment_post_ID . ", \\\"". $c->comment_author ."\\\")\"
+  :language Prolog)";
+	
+	wpmas_send_message($msg);
 	
 }
