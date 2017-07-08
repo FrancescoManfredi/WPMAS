@@ -14,5 +14,53 @@ defined( 'ABSPATH' ) or die( 'This is a worpdress plugin. You should not execute
 require_once(plugin_dir_path(__FILE__) . "wpmas-db.php");
 require_once(plugin_dir_path(__FILE__) . "wpmas-ui.php");
 
-add_action( 'admin_menu', 'build_admin_ui' );
+/**
+ * Set default options
+ */
+function wpmas_set_default() {
+	
+	$wpmas_default_options = [
+		'masHost' => '',
+		'sender' => '',
+		'events' => [
+			'new_post' => [
+				'track' => false,
+				'receiver' => '',
+			],
+			'new_comment' => [
+				'track' => false,
+				'receiver' => '',
+			],
+			'new_user' => [
+				'track' => false,
+				'receiver' => '',
+			],
+			'login' => [
+				'track' => false,
+				'receiver' => '',
+			],
+			'visit' => [
+				'track' => false,
+				'receiver' => '',
+			]
+		]
+	];
+	
+	wpmas_set_options($wpmas_default_options);
+}
 
+if (!wpmas_get_options()) {
+	wpmas_set_default();
+}
+
+add_action( 'admin_menu', 'wpmas_build_admin_ui' );
+
+/**
+ * Bind the reaction of sending the appropriate message to the events the
+ * admin wants to track.
+ */
+function wpmas_bind_events() {
+	
+}
+
+wpmas_bind_events();
