@@ -26,7 +26,7 @@ or [filter](https://codex.wordpress.org/Plugin_API/Filter_Reference) hook better
 represents the event you want to track;
 - Edit the plugin ui (wpmas-ui.php) to show the needed input fields and to update
 the right options in the database (the source code in that file is quite self-explainatory);
-- Add a callback function named wpmas_<hook-name>_callback() in the wpmas-callbacks.php
+- Add a callback function named wpmas_(hook-name)_callback() in the wpmas-callbacks.php
 file to create the message you want to send (you can look at the other callbacks to
 understand how to do that. It's really simple).
 
