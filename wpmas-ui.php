@@ -37,26 +37,26 @@ function wpmas_settings_page() {
 		}
 		$wpmas_options['events']['comment_post']['receiver'] = $_POST['comment_post_receiver'];
 		
-		if ($_POST['new_user_track']) {
-			$wpmas_options['events']['new_user']['track'] = true;
+		if ($_POST['user_register_track']) {
+			$wpmas_options['events']['user_register']['track'] = true;
 		} else {
-			$wpmas_options['events']['new_user']['track'] = false;
+			$wpmas_options['events']['user_register']['track'] = false;
 		}
-		$wpmas_options['events']['new_user']['receiver'] = $_POST['new_user_receiver'];
+		$wpmas_options['events']['user_register']['receiver'] = $_POST['user_register_receiver'];
 		
 		if ($_POST['login_track']) {
-			$wpmas_options['events']['login']['track'] = true;
+			$wpmas_options['events']['wp_login']['track'] = true;
 		} else {
-			$wpmas_options['events']['login']['track'] = false;
+			$wpmas_options['events']['wp_login']['track'] = false;
 		}
-		$wpmas_options['events']['login']['receiver'] = $_POST['login_receiver'];
+		$wpmas_options['events']['wp_login']['receiver'] = $_POST['wp_login_receiver'];
 		
 		if ($_POST['visit_track']) {
-			$wpmas_options['events']['visit']['track'] = true;
+			$wpmas_options['events']['wp_loaded']['track'] = true;
 		} else {
-			$wpmas_options['events']['visit']['track'] = false;
+			$wpmas_options['events']['wp_loaded']['track'] = false;
 		}
-		$wpmas_options['events']['visit']['receiver'] = $_POST['visit_receiver'];
+		$wpmas_options['events']['wp_loaded']['receiver'] = $_POST['wp_loaded_receiver'];
 		
 		wpmas_set_options($wpmas_options);
 	} else {
@@ -119,11 +119,11 @@ function wpmas_settings_page() {
 		<tr>
 			<th scope="row"><label>New user</label></th>
 			<td>
-				<label for="new_user_track">Track event: 
-					<input type="checkbox" id="new_user_track" name="new_user_track" value="new_user_track" <?php if($wpmas_options['events']['new_user']['track']) echo 'checked' ?>>
+				<label for="user_register_track">Track event: 
+					<input type="checkbox" id="user_register_track" name="user_register_track" value="user_register_track" <?php if($wpmas_options['events']['user_register']['track']) echo 'checked' ?>>
 				</label>
-				<label for="new_user_receiver">
-					<input name="new_user_receiver" placeholder="es: agentSmith agentJohn" type="text" id="new_user_receiver" value="<?php echo $wpmas_options['events']['new_user']['receiver']; ?>" class="regular-text" />
+				<label for="user_register_receiver">
+					<input name="user_register_receiver" placeholder="es: agentSmith agentJohn" type="text" id="user_register_receiver" value="<?php echo $wpmas_options['events']['user_register']['receiver']; ?>" class="regular-text" />
 				</label>
 			</td>
 		</tr>
