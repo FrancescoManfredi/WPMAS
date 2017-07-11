@@ -21,6 +21,7 @@ function wpmas_settings_page() {
 	/* if data was posted, build $wpmas_options and update the db */
 	if (isset($_POST['posted']) && $_POST['posted']=='y') {
 		$wpmas_options['masHost'] = $_POST['masHost'];
+		$wpmas_options['masPort'] = $_POST['masPort'];
 		$wpmas_options['sender'] = $_POST['sender'];
 		if ($_POST['save_post_track']) {
 			$wpmas_options['events']['save_post']['track'] = true;
@@ -79,8 +80,10 @@ function wpmas_settings_page() {
 		<input type="hidden" name="posted" value="y"/>
 	<table class="form-table">
 		<tr>
-			<th scope="row"><label for="masHost">MAS host</label></th>
-			<td><input name="masHost" placeholder="es: http://localhst:80" type="text" id="masHost" value="<?php echo $wpmas_options['masHost']; ?>" class="regular-text" /></td>
+			<th scope="row"><label for="masHost">MAS host and port</label></th>
+			<td><input name="masHost" placeholder="es: localhost" type="text" id="masHost" value="<?php echo $wpmas_options['masHost']; ?>" class="regular-text" />
+			<input name="masPort" placeholder="es: 5000" type="text" id="masPort" value="<?php echo $wpmas_options['masPort']; ?>" class="regular-text" />
+			</td>
 		</tr>
 		<tr>
 			<th scope="row"><label for="sender">Sender Name</label></th>

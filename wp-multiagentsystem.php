@@ -22,6 +22,7 @@ function wpmas_set_default() {
 	
 	$wpmas_default_options = [
 		'masHost' => '',
+		'masPort' => '',
 		'sender' => '',
 		'events' => [
 			'save_post' => [
