@@ -12,3 +12,8 @@ Messages are sent via sockets.
 
 Take a look at [basicJadeMAS](https://github.com/FrancescoManfredi/basicJadeMAS)
 for an example of how to receive messages on the MAS end.
+
+### How to install
+These php files should go inside a folder named wp-multiagentsystem inside the
+/wp-content/plugins directory of your wordpress installation.  
+After that you will be able to activate it in the plugin section of the administration area.
