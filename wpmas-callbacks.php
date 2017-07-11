@@ -45,3 +45,22 @@ function wpmas_save_post_callback( $post_id ) {
 	
 	wpmas_send_message($msg);
 }
+
+/**
+ * Handle new wordpress comments
+ */
+function wpmas_comment_post_callback($comment_id) {
+	$wpmas_options = wpmas_get_options();
+	$c = get_comment($comment_id);
+	
+	/*
+	 * newComment(commentId, commentPostId, author)
+	 */
+	$msg = new stdClass();
+	$msg->receiver = $wpmas_options['events']['save_post']['receiver'];
+	$msg->sender = $wpmas_options['sender'];
+	$msg->msg = "newComment(" . $comment_id . ", " . $c->comment_post_ID . ", ". $c->comment_author .")";
+	$msg->lang = "Prolog";
+	
+	wpmas_send_message($msg);
+}
