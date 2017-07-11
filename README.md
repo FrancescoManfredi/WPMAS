@@ -36,3 +36,9 @@ JADE MAS is based on sockets and bypasses the standard communication protocol
 used by JADE.
 If you inted to use this in production you'll need to pay due attention to any
 security issues this may cause.
+
+### Having agents interact with WordPress
+The management of the WordPress website by the agents is not included in this
+experiments. Ideally an agent could perform any kind of action in response to
+a message. WordPress websites have a convenient [REST API](https://developer.wordpress.org/rest-api/) to manage the website
+remotely.
