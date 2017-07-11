@@ -83,3 +83,21 @@ function wpmas_user_register_callback($user_id) {
 	
 	wpmas_send_message($msg);
 }
+
+/**
+ * Handle user login event
+ */
+function wpmas_wp_login_callback($user_login) {
+	$wpmas_options = wpmas_get_options();
+	
+	/*
+	 * userLoggedIn(userName)
+	 */
+	$msg = new stdClass();
+	$msg->receiver = $wpmas_options['events']['wp_login']['receiver'];
+	$msg->sender = $wpmas_options['sender'];
+	$msg->msg = "userLoggedIn(" . $user_login . ")";
+	$msg->lang = "Prolog";
+	
+	wpmas_send_message($msg);
+}
