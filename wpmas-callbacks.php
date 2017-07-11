@@ -57,9 +57,28 @@ function wpmas_comment_post_callback($comment_id) {
 	 * newComment(commentId, commentPostId, author)
 	 */
 	$msg = new stdClass();
-	$msg->receiver = $wpmas_options['events']['save_post']['receiver'];
+	$msg->receiver = $wpmas_options['events']['comment_post']['receiver'];
 	$msg->sender = $wpmas_options['sender'];
 	$msg->msg = "newComment(" . $comment_id . ", " . $c->comment_post_ID . ", ". $c->comment_author .")";
+	$msg->lang = "Prolog";
+	
+	wpmas_send_message($msg);
+}
+
+/**
+ * Handle new wordpress user creation
+ */
+function wpmas_user_register_callback($user_id) {
+	$wpmas_options = wpmas_get_options();
+	$u = get_userdata($user_id);
+	
+	/*
+	 * newUser(userId, userName, roles)
+	 */
+	$msg = new stdClass();
+	$msg->receiver = $wpmas_options['events']['user_register']['receiver'];
+	$msg->sender = $wpmas_options['sender'];
+	$msg->msg = "newUser(" . $user_id . ", " . $u->user_login . ", ". implode(', ', $u->roles) .")";
 	$msg->lang = "Prolog";
 	
 	wpmas_send_message($msg);
