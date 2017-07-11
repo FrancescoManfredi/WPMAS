@@ -51,12 +51,12 @@ function wpmas_settings_page() {
 		}
 		$wpmas_options['events']['wp_login']['receiver'] = $_POST['wp_login_receiver'];
 		
-		if ($_POST['visit_track']) {
-			$wpmas_options['events']['wp_loaded']['track'] = true;
+		if ($_POST['template_redirect_track']) {
+			$wpmas_options['events']['template_redirect']['track'] = true;
 		} else {
-			$wpmas_options['events']['wp_loaded']['track'] = false;
+			$wpmas_options['events']['template_redirect']['track'] = false;
 		}
-		$wpmas_options['events']['wp_loaded']['receiver'] = $_POST['wp_loaded_receiver'];
+		$wpmas_options['events']['template_redirect']['receiver'] = $_POST['template_redirect_receiver'];
 		
 		wpmas_set_options($wpmas_options);
 	} else {
@@ -141,11 +141,11 @@ function wpmas_settings_page() {
 		<tr>
 			<th scope="row"><label>Page visit</label></th>
 			<td>
-				<label for="wp_loaded_track">Track event: 
-					<input type="checkbox" id="wp_loaded_track" name="wp_loaded_track" value="wp_loaded_track" <?php if($wpmas_options['events']['wp_loaded']['track']) echo 'checked' ?>>
+				<label for="template_redirect_track">Track event: 
+					<input type="checkbox" id="template_redirect_track" name="template_redirect_track" value="template_redirect_track" <?php if($wpmas_options['events']['template_redirect']['track']) echo 'checked' ?>>
 				</label>
-				<label for="wp_loaded_receiver">
-					<input name="wp_loaded_receiver" placeholder="es: agentSmith agentJohn" type="text" id="wp_loaded_receiver" value="<?php echo $wpmas_options['events']['wp_loaded']['receiver']; ?>" class="regular-text" />
+				<label for="template_redirect_receiver">
+					<input name="template_redirect_receiver" placeholder="es: agentSmith agentJohn" type="text" id="template_redirect_receiver" value="<?php echo $wpmas_options['events']['template_redirect']['receiver']; ?>" class="regular-text" />
 				</label>
 			</td>
 		</tr>

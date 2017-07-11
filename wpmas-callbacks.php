@@ -101,3 +101,24 @@ function wpmas_wp_login_callback($user_login) {
 	
 	wpmas_send_message($msg);
 }
+
+/**
+ * Handle page visit
+ */
+function wpmas_template_redirect_callback() {
+	$wpmas_options = wpmas_get_options();
+	
+	$user_ip = $_SERVER['REMOTE_ADDR'];
+	$isLogged = is_user_logged_in();
+	$url = $_SERVER['REQUEST_URI'];
+	/*
+	 * visit(userIp, logged, urlVisited)
+	 */
+	$msg = new stdClass();
+	$msg->receiver = $wpmas_options['events']['template_redirect']['receiver'];
+	$msg->sender = $wpmas_options['sender'];
+	$msg->msg = "visit(" . $user_ip . ", " . $isLogged . ", " . $url . ")";
+	$msg->lang = "Prolog";
+	
+	wpmas_send_message($msg);
+}

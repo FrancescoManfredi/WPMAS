@@ -41,7 +41,7 @@ function wpmas_set_default() {
 				'track' => false,
 				'receiver' => '',
 			],
-			'wp_loaded' => [
+			'template_redirect' => [
 				'track' => false,
 				'receiver' => '',
 			]
