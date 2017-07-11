@@ -12,13 +12,17 @@ function wpmas_send_message($message) {
 	
 	$wpmas_options = wpmas_get_options();
 	
-	$ch = curl_init();
+	$port = $wpmas_options['masPort'];
+	$host = $wpmas_options['masHost'];
 
-	curl_setopt($ch, CURLOPT_URL, $wpmas_options['masHost']);
-	curl_setopt($ch, CURLOPT_POST, 1);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array('msg' => $message)));
-	curl_exec($ch);
-	curl_close ($ch);
+	$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+
+	$jsonMessage = json_encode($message);
+	
+	socket_connect($socket, $host, $port);
+	socket_write($socket, $jsonMessage . "\n");
+	socket_close($socket);
+	
 }
 
 /**
@@ -34,10 +38,10 @@ function wpmas_save_post_callback( $post_id ) {
 	 * newPost(postId, postType, author)
 	 */
 	$msg = new stdClass();
-	$msg["receiver"] = $wpmas_options['events']['save_post']['receiver'];
-	$msg["sender"] = $wpmas_options['sender'];
-	$msg["msg"] = "newPost(" . $post_id . ", " . $p->post_type . ", ". $p->post_author .")";
-	$msg["lang"] = "Prolog";
+	$msg->receiver = $wpmas_options['events']['save_post']['receiver'];
+	$msg->sender = $wpmas_options['sender'];
+	$msg->msg = "newPost(" . $post_id . ", " . $p->post_type . ", ". $p->post_author .")";
+	$msg->lang = "Prolog";
 	
 	wpmas_send_message($msg);
 }
